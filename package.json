@@ -1,5 +1,6 @@
 {
 	"name": "react-graphql-chat-hack",
+	"homepage": "http://globalroo.github.io/chatable/",
 	"version": "0.1.0",
 	"private": false,
 	"dependencies": {
