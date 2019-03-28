@@ -1,0 +1,8 @@
+.*
+package.json
+*.yml
+README.md
+*html
+*.css
+*.snap.*
+*.json
