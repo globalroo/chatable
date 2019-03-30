@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { apolloClient, setBasicTokenStore } from "./ApolloSetup";
+import { LoginForm } from "./LoginForm";
 import gql from "graphql-tag";
 
 import "./App.css";
 
-/* CREATE USER MUTATION
-mutation {
-  createUser(name: "testUser", authProvider: {email: {email: "null", password: "null"}}) {
-    id
-  }
-}
-*/
+const createUserAndSignOn = gql`
+	mutation createUserAndSignOn($name: String!, $email: String!, $password: String!) {
+		createUser(name: $name, authProvider: { email: { email: $email, password: $password } }) {
+			id
+		}
+		signinUser(email: { email: $email, password: $password }) {
+			token
+			user {
+				id
+				name
+				email
+			}
+		}
+	}
+`;
 
-const login = gql`
+const signOn = gql`
 	mutation login($email: String!, $password: String!) {
 		signinUser(email: { email: $email, password: $password }) {
 			token
@@ -26,29 +35,38 @@ const login = gql`
 	}
 `;
 
-const attemptLogin = async ({ email, password }) => {
-	// Perform signin mutation
-	const response = await apolloClient.mutate({
-		mutation: login,
-		variables: {
-			email,
-			password
-		}
-	});
-	return response;
-};
-
 const App = () => {
-	const [response, setResponse] = useState();
-	useEffect(() => {
-		attemptLogin({ email: "null", password: "null" }).then(response => {
-			setResponse(response);
-			setBasicTokenStore(response);
-		});
-	}, []);
+	const [user, setUser] = useState();
+	const [error, setError] = useState();
+
+	const attemptLogin = async ({ name, email, password }) => {
+		setError(null);
+		setUser(null);
+		try {
+			const result = await apolloClient.mutate({
+				mutation: name === "" ? signOn : createUserAndSignOn,
+				variables: {
+					name: name,
+					email: email,
+					password: password
+				}
+			});
+			const { data = {} } = result;
+			const { signinUser = {} } = data;
+			const { token = "" } = signinUser;
+			setBasicTokenStore(token);
+			setUser(signinUser);
+		} catch (e) {
+			setError(e.message);
+		}
+	};
 	return (
 		<ApolloProvider client={apolloClient}>
-			<>{response && <div>{JSON.stringify(response)}</div>}</>
+			<>
+				<LoginForm handleLogin={attemptLogin} />
+				{user && <div>{JSON.stringify(user)}</div>}
+				{error && <div>{error}</div>}
+			</>
 		</ApolloProvider>
 	);
 };
