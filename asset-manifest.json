@@ -1,13 +1,13 @@
 {
-  "main.css": "/chatable/static/css/main.6cb17bce.chunk.css",
-  "main.js": "/chatable/static/js/main.66c0d1eb.chunk.js",
-  "main.js.map": "/chatable/static/js/main.66c0d1eb.chunk.js.map",
+  "main.css": "/chatable/static/css/main.79af88d4.chunk.css",
+  "main.js": "/chatable/static/js/main.9a1af5b9.chunk.js",
+  "main.js.map": "/chatable/static/js/main.9a1af5b9.chunk.js.map",
   "runtime~main.js": "/chatable/static/js/runtime~main.9144ddb6.js",
   "runtime~main.js.map": "/chatable/static/js/runtime~main.9144ddb6.js.map",
-  "static/js/2.6ee99ba6.chunk.js": "/chatable/static/js/2.6ee99ba6.chunk.js",
-  "static/js/2.6ee99ba6.chunk.js.map": "/chatable/static/js/2.6ee99ba6.chunk.js.map",
+  "static/js/2.593ac05a.chunk.js": "/chatable/static/js/2.593ac05a.chunk.js",
+  "static/js/2.593ac05a.chunk.js.map": "/chatable/static/js/2.593ac05a.chunk.js.map",
   "index.html": "/chatable/index.html",
-  "precache-manifest.b74b6435e76d7aaf3271aa264f3f971d.js": "/chatable/precache-manifest.b74b6435e76d7aaf3271aa264f3f971d.js",
+  "precache-manifest.267be021b6f33470f0cf046a205977ef.js": "/chatable/precache-manifest.267be021b6f33470f0cf046a205977ef.js",
   "service-worker.js": "/chatable/service-worker.js",
-  "static/css/main.6cb17bce.chunk.css.map": "/chatable/static/css/main.6cb17bce.chunk.css.map"
+  "static/css/main.79af88d4.chunk.css.map": "/chatable/static/css/main.79af88d4.chunk.css.map"
 }
