@@ -12,7 +12,7 @@ const allGroups = gql`
 	}
 `;
 
-export const AvailableGroups = () => {
+export const AvailableGroups = ({ group }) => {
 	return (
 		<Query query={allGroups}>
 			{({ loading, error, data }) => {
@@ -20,11 +20,16 @@ export const AvailableGroups = () => {
 				if (error) return <p>Error :( {JSON.stringify(error)}</p>;
 				return (
 					<ul style={{ color: "white" }}>
-						{data.allGroups.map(group => (
-							<li>
-								{group.name} <br />[{group.id}]
-							</li>
-						))}
+						{data.allGroups.map((currentGroup, ix) => {
+							const selectedGroup = currentGroup.id === group.id;
+							const key = `groupSelector_${currentGroup.id}`;
+							return (
+								<li key={key} data-testid={key}>
+									{currentGroup.name} <br />[{currentGroup.id}]<br />
+									{selectedGroup ? "Current Group" : ""}
+								</li>
+							);
+						})}
 					</ul>
 				);
 			}}

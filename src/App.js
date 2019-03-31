@@ -54,9 +54,10 @@ const App = () => {
 			});
 			const { data = {} } = result;
 			const { signinUser = {} } = data;
-			const { token = "" } = signinUser;
+			const { token = "", ...usefulBit } = signinUser;
+			const { user } = usefulBit;
 			setBasicTokenStore(token);
-			setUser(signinUser);
+			setUser(user);
 		} catch (e) {
 			setError(e.message);
 		}
@@ -67,12 +68,13 @@ const App = () => {
 		setBasicTokenStore({ token: null });
 		apolloClient.resetStore();
 	};
+	const group = { name: "General", id: "cjtxbbp3yglac0183o1oovog7" }; // Hardcoded in server
 
 	return (
 		<ApolloProvider client={apolloClient}>
 			<>
 				{user ? (
-					<ChatScreen user={user} handleLogout={handleLogout} />
+					<ChatScreen user={user} group={group} handleLogout={handleLogout} />
 				) : (
 					<LoginForm handleLogin={handleLogin} />
 				)}

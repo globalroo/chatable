@@ -2,22 +2,26 @@ import React from "react";
 
 import "./ChatScreen.css";
 
-import { FormControl } from "react-bootstrap";
 import { AvailableGroups } from "./AvailableGroups";
+import { AddChat } from "./AddChat";
+import { GroupMessages } from "./GroupChatEntries";
 
-export const ChatScreen = ({ user, handleLogout }) => {
+export const ChatScreen = ({ user, group, handleLogout }) => {
+	console.log(user);
 	return (
 		<div className="app-layout">
 			<div className="channels box">
 				<div> List channels </div>
-				<AvailableGroups />
+				<AvailableGroups group={group} />
 			</div>
 			<div className="header">
 				{JSON.stringify(user)} <button onClick={handleLogout}>Logout</button>
 			</div>
-			<div className="messages box scroll-container">Chat entries here</div>
+			<div className="messages box scroll-container">
+				<GroupMessages group={group} />
+			</div>
 			<div className="input box">
-				<FormControl type="text" placeholder="Type to talk..." autoFocus />
+				<AddChat user={user} group={group} />
 			</div>
 		</div>
 	);
