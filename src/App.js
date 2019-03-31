@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { apolloClient, setBasicTokenStore } from "./ApolloSetup";
 import { LoginForm } from "./LoginForm";
 import gql from "graphql-tag";
 
+import { ChatScreen } from "./ChatScreen";
 import "./App.css";
 
 const createUserAndSignOn = gql`
@@ -39,7 +40,7 @@ const App = () => {
 	const [user, setUser] = useState();
 	const [error, setError] = useState();
 
-	const attemptLogin = async ({ name, email, password }) => {
+	const handleLogin = async ({ name, email, password }) => {
 		setError(null);
 		setUser(null);
 		try {
@@ -60,11 +61,21 @@ const App = () => {
 			setError(e.message);
 		}
 	};
+
+	const handleLogout = () => {
+		setUser(undefined);
+		setBasicTokenStore({ token: null });
+		apolloClient.resetStore();
+	};
+
 	return (
 		<ApolloProvider client={apolloClient}>
 			<>
-				<LoginForm handleLogin={attemptLogin} />
-				{user && <div>{JSON.stringify(user)}</div>}
+				{user ? (
+					<ChatScreen user={user} handleLogout={handleLogout} />
+				) : (
+					<LoginForm handleLogin={handleLogin} />
+				)}
 				{error && <div>{error}</div>}
 			</>
 		</ApolloProvider>

@@ -1,0 +1,47 @@
+.app-layout {
+    display: grid;
+    min-width: 840px;
+    min-height: 350px;
+    height: 100vh;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: auto 1fr auto;
+}
+
+.box {
+    padding: 1em;
+}
+
+.channels {
+    background-color: #000000;
+    grid-column: 2;
+    grid-row: 1 / 4;
+    min-width: 140px
+}
+
+.header {
+    background-color: #ffffff;
+    padding: "1em";
+    grid-column: 1;
+    grid-row: 1;
+    color: #333;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.header-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between
+}
+
+input {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.messages {
+    background-color: #ffffff;
+    grid-column: 1 / 2;
+    grid-row: 2;
+    padding: 0 1em;
+    overflow-y: scroll;
+}
