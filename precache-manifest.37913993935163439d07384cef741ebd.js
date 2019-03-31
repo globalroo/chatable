@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/chatable/static/js/runtime~main.9144ddb6.js"
   },
   {
-    "revision": "7ea164184e99c57eef04",
+    "revision": "d79bda7f0ed8adfb6d9d",
     "url": "/chatable/static/js/main.b4850ab6.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/chatable/static/js/2.7fc3838f.chunk.js"
   },
   {
-    "revision": "7ea164184e99c57eef04",
-    "url": "/chatable/static/css/main.79af88d4.chunk.css"
+    "revision": "d79bda7f0ed8adfb6d9d",
+    "url": "/chatable/static/css/main.aec1055d.chunk.css"
   },
   {
-    "revision": "31c93ced9793beaacc1789d4457c8c3b",
+    "revision": "224e09b27397cccce8c64c01ca4e2849",
     "url": "/chatable/index.html"
   }
 ];

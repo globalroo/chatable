@@ -1,5 +1,5 @@
 {
-  "main.css": "/chatable/static/css/main.79af88d4.chunk.css",
+  "main.css": "/chatable/static/css/main.aec1055d.chunk.css",
   "main.js": "/chatable/static/js/main.b4850ab6.chunk.js",
   "main.js.map": "/chatable/static/js/main.b4850ab6.chunk.js.map",
   "runtime~main.js": "/chatable/static/js/runtime~main.9144ddb6.js",
@@ -7,7 +7,7 @@
   "static/js/2.7fc3838f.chunk.js": "/chatable/static/js/2.7fc3838f.chunk.js",
   "static/js/2.7fc3838f.chunk.js.map": "/chatable/static/js/2.7fc3838f.chunk.js.map",
   "index.html": "/chatable/index.html",
-  "precache-manifest.21f59d89ac6fc50c77d58059a3c9d211.js": "/chatable/precache-manifest.21f59d89ac6fc50c77d58059a3c9d211.js",
+  "precache-manifest.37913993935163439d07384cef741ebd.js": "/chatable/precache-manifest.37913993935163439d07384cef741ebd.js",
   "service-worker.js": "/chatable/service-worker.js",
-  "static/css/main.79af88d4.chunk.css.map": "/chatable/static/css/main.79af88d4.chunk.css.map"
+  "static/css/main.aec1055d.chunk.css.map": "/chatable/static/css/main.aec1055d.chunk.css.map"
 }
