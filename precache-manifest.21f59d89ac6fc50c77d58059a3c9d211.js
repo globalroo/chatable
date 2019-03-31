@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/chatable/static/css/main.79af88d4.chunk.css"
   },
   {
-    "revision": "f4cdc0966e815cfccabb7f965bcfd73a",
+    "revision": "31c93ced9793beaacc1789d4457c8c3b",
     "url": "/chatable/index.html"
   }
 ];
