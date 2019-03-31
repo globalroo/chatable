@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import { DynamicGroupMessages } from "./DynamicGroupMessages";
 
 const allGroupChatEntries = gql`
 	query allGroupChatEntries($groupId: ID!) {
@@ -18,34 +19,22 @@ const allGroupChatEntries = gql`
 	}
 `;
 
-const ShowChat = ({ data }) => {
-	const { allGroupChatEntries = [] } = data;
-
-	return (
-		<ul>
-			{allGroupChatEntries.map(entry => (
-				<li key={entry.id}>{JSON.stringify(entry)}</li>
-			))}
-		</ul>
-	);
-};
-
 export const GroupMessages = ({ user, group }) => {
 	console.log({ group });
-	const [refresh, setRefresh] = useState(false);
+
 	return (
 		<Query
 			query={allGroupChatEntries}
 			fetchPolicy={"network-only"}
-			variables={{ groupId: group.id, refresh }}
+			variables={{ groupId: group.id }}
 		>
-			{({ data }) => (
-				<>
-					<ShowChat data={data} />
-					<button onClick={() => setRefresh(!refresh)}>
-						Manual refresh chat entries - click to see last chat {refresh}
-					</button>
-				</>
+			{({ subscribeToMore, ...apolloQuery }) => (
+				<DynamicGroupMessages
+					apolloQuery={apolloQuery}
+					group={group}
+					subscribeToMore={subscribeToMore}
+					user={user}
+				/>
 			)}
 		</Query>
 	);
